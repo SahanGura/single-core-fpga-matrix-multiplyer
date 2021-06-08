@@ -7,7 +7,7 @@ module bus( input clock,
  input [15:0] ac,
  input [7:0] dm,
  input [7:0] im,
- output reg [7:0] busout ) ;
+ output reg [15:0] busout ) ;
  
  always @( r or dr or tr or pc or ac or im or read_en or dm)
 	begin
