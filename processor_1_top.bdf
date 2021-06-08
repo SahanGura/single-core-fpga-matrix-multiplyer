@@ -20,7 +20,7 @@ refer to the applicable agreement for further details.
 */
 (header "graphic" (version "1.4"))
 (symbol
-	(rect 384 72 664 216)
+	(rect 496 16 776 160)
 	(text "data_mem" (rect 5 0 56 12)(font "Arial" ))
 	(text "inst" (rect 8 128 25 140)(font "Arial" ))
 	(port
@@ -78,10 +78,10 @@ refer to the applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 264 128))
 	)
-	(annotation_block (parameter)(rect 664 8 840 72))
+	(annotation_block (parameter)(rect 776 -48 952 16))
 )
 (symbol
-	(rect 376 296 712 440)
+	(rect 488 184 824 328)
 	(text "instr_mem" (rect 5 0 56 12)(font "Arial" ))
 	(text "inst1" (rect 8 128 30 145)(font "Intel Clear" ))
 	(port
@@ -139,10 +139,10 @@ refer to the applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 320 128))
 	)
-	(annotation_block (parameter)(rect 712 232 904 296))
+	(annotation_block (parameter)(rect 824 120 1016 184))
 )
 (symbol
-	(rect 24 40 312 152)
+	(rect 48 -8 336 104)
 	(text "register_inc" (rect 5 0 61 12)(font "Arial" ))
 	(text "inst2" (rect 8 96 30 113)(font "Intel Clear" ))
 	(port
@@ -188,5 +188,5 @@ refer to the applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 272 96))
 	)
-	(annotation_block (parameter)(rect 312 0 488 40))
+	(annotation_block (parameter)(rect 336 -48 512 -8))
 )
