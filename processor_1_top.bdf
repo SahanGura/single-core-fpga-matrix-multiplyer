@@ -141,3 +141,52 @@ refer to the applicable agreement for further details.
 	)
 	(annotation_block (parameter)(rect 712 232 904 296))
 )
+(symbol
+	(rect 24 40 312 152)
+	(text "register_inc" (rect 5 0 61 12)(font "Arial" ))
+	(text "inst2" (rect 8 96 30 113)(font "Intel Clear" ))
+	(port
+		(pt 0 32)
+		(input)
+		(text "clk" (rect 0 0 14 12)(font "Arial" ))
+		(text "clk" (rect 21 27 35 39)(font "Arial" ))
+		(line (pt 0 32)(pt 16 32))
+	)
+	(port
+		(pt 0 48)
+		(input)
+		(text "we" (rect 0 0 12 12)(font "Arial" ))
+		(text "we" (rect 21 43 33 55)(font "Arial" ))
+		(line (pt 0 48)(pt 16 48))
+	)
+	(port
+		(pt 0 64)
+		(input)
+		(text "data_in[data_width-1..0]" (rect 0 0 116 12)(font "Arial" ))
+		(text "data_in[data_width-1..0]" (rect 21 59 137 71)(font "Arial" ))
+		(line (pt 0 64)(pt 16 64)(line_width 3))
+	)
+	(port
+		(pt 0 80)
+		(input)
+		(text "inc" (rect 0 0 14 12)(font "Arial" ))
+		(text "inc" (rect 21 75 35 87)(font "Arial" ))
+		(line (pt 0 80)(pt 16 80))
+	)
+	(port
+		(pt 288 32)
+		(output)
+		(text "data_out[data_width-1..0]" (rect 0 0 123 12)(font "Arial" ))
+		(text "data_out[data_width-1..0]" (rect 163 27 286 39)(font "Arial" ))
+		(line (pt 288 32)(pt 272 32)(line_width 3))
+	)
+	(parameter
+		"data_width"
+		"8"
+		""
+		(type "PARAMETER_SIGNED_DEC")	)
+	(drawing
+		(rectangle (rect 16 16 272 96))
+	)
+	(annotation_block (parameter)(rect 312 0 488 40))
+)
