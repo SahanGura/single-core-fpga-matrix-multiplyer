@@ -1,4 +1,4 @@
-module bus( input clock,
+module bus( input clk,
  input [2:0] read_en,
  input [7:0] r,
  input [7:0] dr,

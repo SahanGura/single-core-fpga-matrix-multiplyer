@@ -1,0 +1,11 @@
+module processor
+(input [7:0] dm_in,
+input [7:0] im_in,
+output [15:0] addr
+output 
+);
+
+
+
+
+endmodule

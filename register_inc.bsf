@@ -22,7 +22,7 @@ refer to the applicable agreement for further details.
 (symbol
 	(rect 64 64 352 208)
 	(text "register_inc" (rect 5 0 61 12)(font "Arial" ))
-	(text "PC" (rect 8 128 23 140)(font "Arial" ))
+	(text "inst" (rect 8 128 25 140)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -73,5 +73,5 @@ refer to the applicable agreement for further details.
 	(drawing
 		(rectangle (rect 16 16 272 128))
 	)
-	(annotation_block (parameter)(rect 304 -24 480 16))
+	(annotation_block (parameter)(rect 352 24 528 64))
 )
