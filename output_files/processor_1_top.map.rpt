@@ -1,5 +1,5 @@
 Analysis & Elaboration report for processor_1_top
-Sun Jun 13 14:47:25 2021
+Sun Jun 13 16:00:53 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -25,8 +25,7 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
  17. Port Connectivity Checks: "register:r"
  18. Port Connectivity Checks: "register:ir"
  19. Port Connectivity Checks: "register:dr"
- 20. Port Connectivity Checks: "register_inc:pc"
- 21. Analysis & Elaboration Messages
+ 20. Analysis & Elaboration Messages
 
 
 
@@ -52,7 +51,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Sun Jun 13 14:47:25 2021       ;
+; Analysis & Elaboration Status      ; Successful - Sun Jun 13 16:00:53 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; processor_1_top                             ;
 ; Top-level Entity Name              ; processor                                   ;
@@ -257,15 +256,14 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------------------------------------------------+--------------------+--------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_unit:cu"                                                                                                                   ;
-+-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                                                                     ;
-+-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
-; write_en[0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                         ;
-; alu_mode    ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "alu_mode[3..3]" have no fanouts ;
-; end_op      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                    ;
-+-------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control_unit:cu"                                                                                                                ;
++----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                                     ;
++----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
+; alu_mode ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "alu_mode[3..3]" have no fanouts ;
+; end_op   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                    ;
++----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -273,6 +271,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 ; Port ; Type  ; Severity ; Details                                                                                                                                                                           ;
 +------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; pc   ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
 ; dr   ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
 +------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
@@ -325,22 +324,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "register_inc:pc"                                                                                                                  ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                       ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; data_out ; Output ; Warning  ; Output or bidir port (16 bits) is wider than the port expression (8 bits) it drives; bit(s) "data_out[15..8]" have no fanouts ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-
-
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Sun Jun 13 14:47:03 2021
+    Info: Processing started: Sun Jun 13 16:00:32 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processor_1 -c processor_1_top --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -360,6 +350,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file control
     Info (12023): Found entity 1: control_unit File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file processor.v
     Info (12023): Found entity 1: processor File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file mult_2_1.v
+    Info (12023): Found entity 1: mult_2_1 File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/mult_2_1.v Line: 1
 Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(16): Parameter Declaration in module "instr_mem" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/instr_mem.v Line: 16
 Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(17): Parameter Declaration in module "instr_mem" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/instr_mem.v Line: 17
 Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(18): Parameter Declaration in module "instr_mem" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/instr_mem.v Line: 18
@@ -403,6 +395,7 @@ Warning (10199): Verilog HDL Case Statement warning at control_unit.v(403): case
 Warning (10199): Verilog HDL Case Statement warning at control_unit.v(426): case item expression never matches the case expression File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 426
 Warning (10230): Verilog HDL assignment warning at control_unit.v(439): truncated value with size 3 to match size of target (1) File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 439
 Warning (10034): Output port "alu_mode" at control_unit.v(6) has no driver File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 6
+Info (12128): Elaborating entity "mult_2_1" for hierarchy "mult_2_1:mult1" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 129
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "dr_out[15]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[14]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
@@ -422,22 +415,6 @@ Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "dr_out[9]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[8]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
 Warning (12011): Net is missing source, defaulting to GND
-    Warning (12110): Net "ar_in[15]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[14]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[13]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[12]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[11]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[10]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[9]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[8]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[7]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[6]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[5]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[4]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[3]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[2]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[1]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
-    Warning (12110): Net "ar_in[0]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 17
     Warning (12110): Net "dr_out[15]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[14]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[13]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
@@ -446,11 +423,11 @@ Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "dr_out[10]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[9]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[8]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
-Warning (12241): 8 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 82 warnings
-    Info: Peak virtual memory: 4730 megabytes
-    Info: Processing ended: Sun Jun 13 14:47:25 2021
-    Info: Elapsed time: 00:00:22
+Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 66 warnings
+    Info: Peak virtual memory: 4729 megabytes
+    Info: Processing ended: Sun Jun 13 16:00:53 2021
+    Info: Elapsed time: 00:00:21
     Info: Total CPU time (on all processors): 00:00:31
 
 

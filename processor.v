@@ -19,7 +19,7 @@ wire z;
 
 //wire [15:0] ar_out;
 wire [7:0] ir_out;
-wire [7:0] pc_out;
+wire [15:0] pc_out;
 wire [15:0]dr_out;
 wire [7:0] r_out;
 wire [15:0] tr_out;
@@ -30,46 +30,46 @@ wire [15:0] alu_out;
 register #(.data_width(16)) ar
 (
 .clk (clk),
-.we (we[1]),
-.data_in(ar_in[15:0]),
+.we (we[6]),
+.data_in(ar_in),
 .data_out(addr)
 );
 
 register_inc #(.data_width(16)) pc
 (
 .clk (clk),
-.we (we[2]),
+.we (we[5]),
 .clr(clr[0]),
 .inc(inc[0]),
-.data_in(ar_in[15:0]),
+.data_in(bus_out[15:0]),
 .data_out(pc_out)
 );
 
 register dr(
 .clk (clk),
-.we (we[3]),
-.data_in(ar_in[15:0]),
+.we (we[4]),
+.data_in(bus_out[15:0]),
 .data_out(dr_out)
 );
 
 register ir(
 .clk (clk),
-.we (we[4]),
-.data_in(ar_in[15:0]),
+.we (we[3]),
+.data_in(bus_out[15:0]),
 .data_out(ir_out)
 );
 
 register r(
 .clk (clk),
-.we (we[5]),
-.data_in(ar_in[15:0]),
+.we (we[2]),
+.data_in(bus_out[15:0]),
 .data_out(r_out)
 );
 
 register_inc #(.data_width(16)) tr
 (
 .clk (clk),
-.we (we[6]),
+.we (we[1]),
 .clr(clr[1]),
 .inc(0),
 .data_in(bus_out[15:0]),
@@ -79,7 +79,7 @@ register_inc #(.data_width(16)) tr
 register_inc #(.data_width(16)) ac
 (
 .clk (clk),
-.we (we[7]),
+.we (we[0]),
 .clr(clr[2]),
 .inc(inc[1]),
 .data_in(alu_out[15:0]),
@@ -120,6 +120,13 @@ control_unit cu(
 .im_wr(im_wr)
 );
 
+mult_2_1 mult1 (
+.in1(pc_out),
+.in2(bus_out),
+.clk(clk),
+.sel(we[7]),
+.out(ar_in)
+);
 
 
 always @ (posedge clk)
