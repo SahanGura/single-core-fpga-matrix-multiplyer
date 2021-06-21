@@ -488,13 +488,13 @@ module control_unit
 	
  EXEC2:
  begin
-	case (ir[3:0])
+	case (ir[4:0])
 	
-	4'b0000:
-	begin //LDAC
-	 write_en <= 8'b01000000 ; //ar
+	5'd0:
+	begin //LDACI
+	 write_en <= 8'b110000000000 ; //arb ar
 	 inc <= 2'b01; //pc
-	 bus_ld <= 3'd3;//dr
+	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -502,11 +502,23 @@ module control_unit
 	 end_op <= 1'b0;	;		
 	end
 
-	4'b0010:
-	begin //ADDTR   //have an issue here.....................................................
-	 write_en <= 8'b00000010 ; //tr
+	5'd1:
+	begin //LDAC1
+	 write_en <= 8'b000000010000 ; //ac
 	 inc <= 2'b00;
-	 bus_ld <= 3'd5;//ac
+	 bus_ld <= 4'd3;//dr
+	 clr <= 3'b000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC3 ;
+	 end_op <= 1'b0;	;		
+	end	
+	
+	5'd10:
+	begin //ADDTR   //have an issue here.....................................................
+	 write_en <= 8'b0000001000000 ; //tr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -515,11 +527,37 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	4'b0100:
-	begin //STTR
-	 write_en <= 8'b01000000 ; //ar
+	5'd11:
+	begin //ADDR1  
+	 write_en <= 8'b0000000010000 ; //r1
+	 inc <= 2'b00;
+	 bus_ld <= 4'd5;//ac
+	 clr <= 3'b000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'b000;
+	 next_stage <= EXEC2;
+	 end_op <= 1'b0;
+	end	
+	
+	5'd12:
+	begin //ADDR2  
+	 write_en <= 8'b0000000001000 ; //r2
+	 inc <= 2'b00;
+	 bus_ld <= 4'd5;//ac
+	 clr <= 3'b000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'b000;
+	 next_stage <= EXEC2;
+	 end_op <= 1'b0;
+	end	
+	
+	5'd13:
+	begin //STACI
+	 write_en <= 8'b1100000000000 ; //arb ar
 	 inc <= 2'b01; //pc
-	 bus_ld <= 3'd3;//dr
+	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -527,35 +565,23 @@ module control_unit
 	 end_op <= 1'b0;		
 	end
 	
-	4'b1001:	//JUMP
-	begin
-	 write_en <= 8'b10000000 ; //arb
-	 inc <= 2'b00;
-	 bus_ld <= 3'd3;//dr
-	 clr <= 3'b000;
-	 dm_wr <=1'b0;
-	 im_wr <=1'b0;
-	 next_stage <= EXEC3 ;
-	 end_op <= 1'b0;			
-	end
+//	4'b1010:	//JUMPZ
+//	begin
+//	 write_en <= 8'b10000000 ; //arb
+//	 inc <= 2'b00;
+//	 bus_ld <= 3'd3;//dr
+//	 clr <= 3'b000;
+//	 dm_wr <=1'b0;
+//	 im_wr <=1'b0;
+//	 next_stage <= EXEC3 ;
+//	 end_op <= 1'b0;
+//	end
 	
-	4'b1010:	//JUMPZ
+	5'd27:	//JPNZ
 	begin
-	 write_en <= 8'b10000000 ; //arb
+	 write_en <= 8'b0010000000000 ; //pc
 	 inc <= 2'b00;
-	 bus_ld <= 3'd3;//dr
-	 clr <= 3'b000;
-	 dm_wr <=1'b0;
-	 im_wr <=1'b0;
-	 next_stage <= EXEC3 ;
-	 end_op <= 1'b0;
-	end
-	
-	4'b1011:	//JPNZ
-	begin
-	 write_en <= 8'b10000000 ; //arb
-	 inc <= 2'b00;
-	 bus_ld <= 3'd3;//dr
+	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
