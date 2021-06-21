@@ -1,5 +1,5 @@
 Analysis & Elaboration report for processor_1_top
-Mon Jun 21 20:51:34 2021
+Mon Jun 21 21:09:53 2021
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -14,18 +14,28 @@ Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
   6. Parameter Settings for User Entity Instance: register:dr
   7. Parameter Settings for User Entity Instance: register:ir
   8. Parameter Settings for User Entity Instance: register:r
-  9. Parameter Settings for User Entity Instance: register_inc:tr
- 10. Parameter Settings for User Entity Instance: register_inc:ac
- 11. Parameter Settings for User Entity Instance: control_unit:cu
- 12. Analysis & Elaboration Settings
- 13. Port Connectivity Checks: "control_unit:cu"
- 14. Port Connectivity Checks: "bus:bus"
- 15. Port Connectivity Checks: "alu:alu1"
- 16. Port Connectivity Checks: "register_inc:tr"
- 17. Port Connectivity Checks: "register:r"
- 18. Port Connectivity Checks: "register:ir"
- 19. Port Connectivity Checks: "register:dr"
- 20. Analysis & Elaboration Messages
+  9. Parameter Settings for User Entity Instance: register:r1
+ 10. Parameter Settings for User Entity Instance: register:r2
+ 11. Parameter Settings for User Entity Instance: register:ri
+ 12. Parameter Settings for User Entity Instance: register:rj
+ 13. Parameter Settings for User Entity Instance: register:rk
+ 14. Parameter Settings for User Entity Instance: register_inc:tr
+ 15. Parameter Settings for User Entity Instance: register_inc:ac
+ 16. Parameter Settings for User Entity Instance: control_unit:cu
+ 17. Analysis & Elaboration Settings
+ 18. Port Connectivity Checks: "control_unit:cu"
+ 19. Port Connectivity Checks: "bus:bus"
+ 20. Port Connectivity Checks: "alu:alu1"
+ 21. Port Connectivity Checks: "register_inc:tr"
+ 22. Port Connectivity Checks: "register:rk"
+ 23. Port Connectivity Checks: "register:rj"
+ 24. Port Connectivity Checks: "register:ri"
+ 25. Port Connectivity Checks: "register:r2"
+ 26. Port Connectivity Checks: "register:r1"
+ 27. Port Connectivity Checks: "register:r"
+ 28. Port Connectivity Checks: "register:ir"
+ 29. Port Connectivity Checks: "register:dr"
+ 30. Analysis & Elaboration Messages
 
 
 
@@ -51,7 +61,7 @@ refer to the applicable agreement for further details.
 +----------------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                                   ;
 +------------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status      ; Successful - Mon Jun 21 20:51:34 2021       ;
+; Analysis & Elaboration Status      ; Successful - Mon Jun 21 21:09:53 2021       ;
 ; Quartus Prime Version              ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                      ; processor_1_top                             ;
 ; Top-level Entity Name              ; processor                                   ;
@@ -131,6 +141,56 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+-------+--------------------------------+
 ; data_width     ; 8     ; Signed Integer                 ;
 +----------------+-------+--------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: register:r1 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: register:r2 ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: register:ri ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: register:rj ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Parameter Settings for User Entity Instance: register:rk ;
++----------------+-------+---------------------------------+
+; Parameter Name ; Value ; Type                            ;
++----------------+-------+---------------------------------+
+; data_width     ; 8     ; Signed Integer                  ;
++----------------+-------+---------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -256,16 +316,15 @@ Note: In order to hide this table in the UI and the text report file, please set
 +------------------------------------------------------------------+--------------------+--------------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_unit:cu"                                                                                                                  ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; Port     ; Type   ; Severity ; Details                                                                                                                       ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
-; write_en ; Output ; Warning  ; Output or bidir port (13 bits) is wider than the port expression (8 bits) it drives; bit(s) "write_en[12..8]" have no fanouts ;
-; bus_ld   ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "bus_ld[3..3]" have no fanouts     ;
-; alu_mode ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "alu_mode[3..3]" have no fanouts   ;
-; end_op   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                      ;
-+----------+--------+----------+-------------------------------------------------------------------------------------------------------------------------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control_unit:cu"                                                                                                                    ;
++--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
+; Port         ; Type   ; Severity ; Details                                                                                                                     ;
++--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
+; write_en[12] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                         ;
+; alu_mode     ; Output ; Warning  ; Output or bidir port (4 bits) is wider than the port expression (3 bits) it drives; bit(s) "alu_mode[3..3]" have no fanouts ;
+; end_op       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                    ;
++--------------+--------+----------+-----------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -296,6 +355,51 @@ Note: In order to hide this table in the UI and the text report file, please set
 ; inc     ; Input ; Warning  ; Input port expression (32 bits) is wider than the input port (1 bits) it drives.  The 31 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
 ; inc[-1] ; Input ; Info     ; Stuck at GND                                                                                                                                                                       ;
 +---------+-------+----------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "register:rk"                                                                                                                                                                        ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                           ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_in ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "register:rj"                                                                                                                                                                        ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                           ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_in ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "register:ri"                                                                                                                                                                        ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                           ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_in ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "register:r2"                                                                                                                                                                        ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                           ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_in ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "register:r1"                                                                                                                                                                        ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port    ; Type  ; Severity ; Details                                                                                                                                                                           ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; data_in ; Input ; Warning  ; Input port expression (16 bits) is wider than the input port (8 bits) it drives.  The 8 most-significant bit(s) in the expression will be dangling if they have no other fanouts. ;
++---------+-------+----------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -332,7 +436,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon Jun 21 20:51:12 2021
+    Info: Processing started: Mon Jun 21 21:09:28 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off processor_1 -c processor_1_top --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
@@ -379,12 +483,17 @@ Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(37): P
 Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(38): Parameter Declaration in module "instr_mem" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/instr_mem.v Line: 38
 Warning (10222): Verilog HDL Parameter Declaration warning at instr_mem.v(39): Parameter Declaration in module "instr_mem" behaves as a Local Parameter Declaration because the module has a Module Parameter Port List File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/instr_mem.v Line: 39
 Info (12127): Elaborating entity "processor" for the top level hierarchy
-Info (12128): Elaborating entity "register" for hierarchy "register:ar" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 36
-Info (12128): Elaborating entity "register_inc" for hierarchy "register_inc:pc" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 46
-Info (12128): Elaborating entity "register" for hierarchy "register:dr" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 53
-Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 95
-Info (12128): Elaborating entity "bus" for hierarchy "bus:bus" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 108
-Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cu" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 121
+Info (12128): Elaborating entity "register" for hierarchy "register:ar" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 42
+Info (12128): Elaborating entity "register_inc" for hierarchy "register_inc:pc" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 52
+Info (12128): Elaborating entity "register" for hierarchy "register:dr" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 59
+Info (12128): Elaborating entity "alu" for hierarchy "alu:alu1" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 136
+Info (12128): Elaborating entity "bus" for hierarchy "bus:bus" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 154
+Warning (10235): Verilog HDL Always Construct warning at bus.v(28): variable "r1" is read inside the Always Construct but isn't in the Always Construct's Event Control File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/bus.v Line: 28
+Warning (10235): Verilog HDL Always Construct warning at bus.v(29): variable "r2" is read inside the Always Construct but isn't in the Always Construct's Event Control File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/bus.v Line: 29
+Warning (10235): Verilog HDL Always Construct warning at bus.v(30): variable "ri" is read inside the Always Construct but isn't in the Always Construct's Event Control File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/bus.v Line: 30
+Warning (10235): Verilog HDL Always Construct warning at bus.v(31): variable "rj" is read inside the Always Construct but isn't in the Always Construct's Event Control File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/bus.v Line: 31
+Warning (10235): Verilog HDL Always Construct warning at bus.v(32): variable "rk" is read inside the Always Construct but isn't in the Always Construct's Event Control File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/bus.v Line: 32
+Info (12128): Elaborating entity "control_unit" for hierarchy "control_unit:cu" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 167
 Warning (10230): Verilog HDL assignment warning at control_unit.v(12): truncated value with size 3 to match size of target (1) File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 12
 Warning (10230): Verilog HDL assignment warning at control_unit.v(13): truncated value with size 3 to match size of target (1) File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 13
 Warning (10230): Verilog HDL assignment warning at control_unit.v(51): truncated value with size 3 to match size of target (1) File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 51
@@ -397,7 +506,7 @@ Warning (10199): Verilog HDL Case Statement warning at control_unit.v(639): case
 Warning (10199): Verilog HDL Case Statement warning at control_unit.v(663): case item expression never matches the case expression File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 663
 Warning (10230): Verilog HDL assignment warning at control_unit.v(676): truncated value with size 3 to match size of target (1) File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 676
 Warning (10034): Output port "alu_mode" at control_unit.v(6) has no driver File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/control_unit.v Line: 6
-Info (12128): Elaborating entity "mult_2_1" for hierarchy "mult_2_1:mult1" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 129
+Info (12128): Elaborating entity "mult_2_1" for hierarchy "mult_2_1:mult1" File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 175
 Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "dr_out[15]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[14]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
@@ -425,11 +534,11 @@ Warning (12011): Net is missing source, defaulting to GND
     Warning (12110): Net "dr_out[10]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[9]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
     Warning (12110): Net "dr_out[8]" is missing source, defaulting to GND File: //Mac/Home/Documents/FPGA_Projects/FPGA_processor_1/processor.v Line: 23
-Warning (12241): 7 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 66 warnings
+Warning (12241): 12 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 71 warnings
     Info: Peak virtual memory: 4733 megabytes
-    Info: Processing ended: Mon Jun 21 20:51:34 2021
-    Info: Elapsed time: 00:00:22
-    Info: Total CPU time (on all processors): 00:00:32
+    Info: Processing ended: Mon Jun 21 21:09:53 2021
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:33
 
 
