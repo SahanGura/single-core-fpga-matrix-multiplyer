@@ -43,7 +43,7 @@ module control_unit
  case (stage)
  FETCH1 :
  begin
- write_en <= 8'b0100000000000 ; //ar
+ write_en <= 13'b0100000000000 ; //ar
  inc <= 2'b00;
  clr <= 3'b000;
  dm_wr <=1'b0;
@@ -54,7 +54,7 @@ module control_unit
  
  FETCH2:
  begin
- write_en <= 8'b0001000000000 ; //dr
+ write_en <= 13'b0001000000000 ; //dr
  inc <= 2'b01; //pc
  bus_ld <= 4'd0;//i_mem
  clr <= 3'b000;
@@ -66,7 +66,7 @@ module control_unit
  
  FETCH3:
  begin
- write_en <= 8'b0000100000000 ; //ir
+ write_en <= 13'b0000100000000 ; //ir
  inc <= 2'b00;
  bus_ld <= 4'd3;//dr
  clr <= 3'b000;
@@ -82,7 +82,7 @@ module control_unit
 	
 	5'd0:
 	begin //LDACI
-	 write_en <= 8'b0001000000000 ; //dr
+	 write_en <= 13'b0001000000000 ; //dr
 	 inc <= 2'b00;
 	 bus_ld <= 4'd0;//imem
 	 clr <= 3'b000;
@@ -94,7 +94,7 @@ module control_unit
 	
 	5'd1:
 	begin //LDAC
-	 write_en <= 8'b0001000000000 ; //dr
+	 write_en <= 13'b0001000000000 ; //dr
 	 inc <= 2'b00;
 	 bus_ld <= 4'd1;//dmem
 	 clr <= 3'b000;
@@ -106,7 +106,7 @@ module control_unit
 	
 	5'd2: 
 	begin //LDARR1
-	 write_en <= 8'b1100000000000 ; //arb ar
+	 write_en <= 13'b1100000000000 ; //arb ar
 	 inc <= 2'b00;
 	 bus_ld <= 4'd7;//r1
 	 clr <= 3'b000;
@@ -118,7 +118,7 @@ module control_unit
 	
 	5'd3: 
 	begin //LDARR2
-	 write_en <= 8'b1100000000000 ; //arb ar
+	 write_en <= 13'b1100000000000 ; //arb ar
 	 inc <= 2'b00;
 	 bus_ld <= 4'd8;//r1
 	 clr <= 3'b000;
@@ -130,7 +130,7 @@ module control_unit
 	
 	5'd4: 
 	begin //MVACR
-	 write_en <= 8'b0000010000000 ; //r
+	 write_en <= 13'b0000010000000 ; //r
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -142,7 +142,7 @@ module control_unit
 
 	5'd5: 
 	begin //MVACR1
-	 write_en <= 8'b0000000010000 ; //r1
+	 write_en <= 13'b0000000010000 ; //r1
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -154,7 +154,7 @@ module control_unit
 
 	5'd6: 
 	begin //MVACR2
-	 write_en <= 8'b0000000001000 ; //r2
+	 write_en <= 13'b0000000001000 ; //r2
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -166,7 +166,7 @@ module control_unit
 
 	5'd7: 
 	begin //MVACRi
-	 write_en <= 8'b0000000000100 ; //ri
+	 write_en <= 13'b0000000000100 ; //ri
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -178,7 +178,7 @@ module control_unit
 
 	5'd8: 
 	begin //MVACRj
-	 write_en <= 8'b0000000000010 ; //rj
+	 write_en <= 13'b0000000000010 ; //rj
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -190,7 +190,7 @@ module control_unit
 
 	5'd9: 
 	begin //MVACRk
-	 write_en <= 8'b0000000000001 ; //rk
+	 write_en <= 13'b0000000000001 ; //rk
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -202,7 +202,7 @@ module control_unit
 	
 	5'd10:
 	begin //ADDTR   //have an issue here.....................................................
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd6;//tr
 	 clr <= 3'b000;
@@ -215,7 +215,7 @@ module control_unit
 	
 	5'd11:
 	begin //ADDR1
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd7;//r1
 	 clr <= 3'b000;
@@ -228,7 +228,7 @@ module control_unit
 	
 	5'd12:
 	begin //ADDR2
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd8;//r2
 	 clr <= 3'b000;
@@ -241,9 +241,9 @@ module control_unit
 
 	5'd13:	
 	begin //STACI
-	 write_en <= 8'b0001000000000 ; //dr
+	 write_en <= 13'b0001000000000 ; //dr
 	 inc <= 2'b00;
-	 bus_ld <= 4'do;//imem
+	 bus_ld <= 4'd0;//imem
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -253,7 +253,7 @@ module control_unit
 		
 	5'd14:
 	begin //STTR
-	 write_en <= 8'b0001000000000 ; //dr
+	 write_en <= 13'b0001000000000 ; //dr
 	 inc <= 2'b00;
 	 bus_ld <= 4'd0;//imem
 	 clr <= 3'b000;
@@ -265,7 +265,7 @@ module control_unit
 	
 	5'd15: //MULT
 	begin 
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd4;//r
 	 clr <= 3'b000;
@@ -278,7 +278,7 @@ module control_unit
 	
 	5'd16: //MULTRi
 	begin 
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd9;//ri
 	 clr <= 3'b000;
@@ -291,7 +291,7 @@ module control_unit
 
 	5'd17: //MULTRj
 	begin 
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd10;//rj
 	 clr <= 3'b000;
@@ -304,7 +304,7 @@ module control_unit
 
 	5'd18: //MULTRk
 	begin 
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd11;//rk
 	 clr <= 3'b000;
@@ -317,7 +317,7 @@ module control_unit
 	
 	5'd19: //SUB
 	begin
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd4;//r
 	 clr <= 3'b000;
@@ -330,7 +330,7 @@ module control_unit
 	
 	5'd20: //SUBRi
 	begin
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd9;//ri
 	 clr <= 3'b000;
@@ -343,7 +343,7 @@ module control_unit
 	
 	5'd21: //SUBRj
 	begin
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd10;//rj
 	 clr <= 3'b000;
@@ -356,7 +356,7 @@ module control_unit
 
 	5'd22: //SUBRk
 	begin
-	 write_en <= 8'b0000000100000 ; //ac
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd11;//rk
 	 clr <= 3'b000;
@@ -369,7 +369,7 @@ module control_unit
 	
 	5'd23: //CLR
 	begin
-	 write_en <= 8'b0000000000000 ;
+	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
 	 clr <= 3'b110;; //ac & tr
 	 dm_wr <=1'b0;
@@ -380,7 +380,7 @@ module control_unit
 	
 	5'd24: //CLRAC
 	begin
-	 write_en <= 8'b0000000000000 ;
+	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
 	 clr <= 3'b100;; //ac
 	 dm_wr <=1'b0;
@@ -391,7 +391,7 @@ module control_unit
 	
 	5'd25: //CLRTR
 	begin
-	 write_en <= 8'b0000000000000 ;
+	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
 	 clr <= 3'b010;; //ac
 	 dm_wr <=1'b0;
@@ -402,7 +402,7 @@ module control_unit
 	
 	5'd26: //INCAC
 	begin
-	 write_en <= 8'b0000000000000 ;
+	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b10; //ac
 	 clr <= 3'b000;;
 	 dm_wr <=1'b0;
@@ -441,7 +441,7 @@ module control_unit
 	begin
 	 if (z==0)
 		begin
-		 write_en <= 8'b0001000000000 ; //dr
+		 write_en <= 13'b0001000000000 ; //dr
 		 inc <= 2'b00;
 		 bus_ld <= 4'd0;//imem
 		 clr <= 3'b000;
@@ -452,7 +452,7 @@ module control_unit
 		end
 	 else
 		begin
-		 write_en <= 8'b0000000000000 ;
+		 write_en <= 13'b0000000000000 ;
 		 inc <= 2'b01; //pc
 		 bus_ld <= 4'd0;//imem
 		 clr <= 3'b000;
@@ -465,7 +465,7 @@ module control_unit
 	
 	5'd28: //ENDOP
 	begin
-	 write_en <= 8'b0000000000000 ;
+	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
 	 bus_ld <= 3'd0;//imem
 	 clr <= 3'b000;
@@ -492,7 +492,7 @@ module control_unit
 	
 	5'd0:
 	begin //LDACI
-	 write_en <= 8'b110000000000 ; //arb ar
+	 write_en <= 13'b110000000000 ; //arb ar
 	 inc <= 2'b01; //pc
 	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
@@ -504,7 +504,7 @@ module control_unit
 
 	5'd1:
 	begin //LDAC1
-	 write_en <= 8'b000000010000 ; //ac
+	 write_en <= 13'b000000010000 ; //ac
 	 inc <= 2'b00;
 	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
@@ -516,7 +516,7 @@ module control_unit
 	
 	5'd10:
 	begin //ADDTR   //have an issue here.....................................................
-	 write_en <= 8'b0000001000000 ; //tr
+	 write_en <= 13'b0000001000000 ; //tr
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -529,7 +529,7 @@ module control_unit
 	
 	5'd11:
 	begin //ADDR1  
-	 write_en <= 8'b0000000010000 ; //r1
+	 write_en <= 13'b0000000010000 ; //r1
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -542,7 +542,7 @@ module control_unit
 	
 	5'd12:
 	begin //ADDR2  
-	 write_en <= 8'b0000000001000 ; //r2
+	 write_en <= 13'b0000000001000 ; //r2
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
@@ -555,7 +555,7 @@ module control_unit
 	
 	5'd13:
 	begin //STACI
-	 write_en <= 8'b1100000000000 ; //arb ar
+	 write_en <= 13'b1100000000000 ; //arb ar
 	 inc <= 2'b01; //pc
 	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
@@ -579,7 +579,7 @@ module control_unit
 	
 	5'd27:	//JPNZ
 	begin
-	 write_en <= 8'b0010000000000 ; //pc
+	 write_en <= 13'b0010000000000 ; //pc
 	 inc <= 2'b00;
 	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
@@ -601,13 +601,13 @@ module control_unit
 	
  EXEC3:
  begin
-	case (ir[3:0])
+	case (ir[4:0])
 	
-	4'b0000:
-	begin //LDAC
-	 write_en <= 8'b00010000 ; //dr
+	5'd0:
+	begin //LDACI
+	 write_en <= 13'b0001000000000 ; //dr
 	 inc <= 2'b00;
-	 bus_ld <= 3'd1;//dmem
+	 bus_ld <= 4'd1;//dmem
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -615,11 +615,11 @@ module control_unit
 	 end_op <= 1'b0;		
 	end
 	 	
-	4'b0100:
-	begin //STTR --------------------- TR --> MEM
-	 write_en <= 8'b00000000 ; //nothing
+	5'd13:
+	begin //STACI --------------------- AC --> MEM
+	 write_en <= 13'b0000000000000 ; //nothing
 	 inc <= 2'b00;
-	 bus_ld <= 3'd6;//tr
+	 bus_ld <= 4'd5;//ac
 	 clr <= 3'b000;
 	 dm_wr <=1'b1;
 	 im_wr <=1'b0;
@@ -638,12 +638,12 @@ module control_unit
  
  EXEC4:
  begin
-	case (ir[3:0])
-	4'b0000:
-	begin //LDAC
-	 write_en <= 8'b00000001 ; //ac
+	case (ir[4:0])
+	5'd0:
+	begin //LDACI
+	 write_en <= 13'b0000000100000 ; //ac
 	 inc <= 2'b00;
-	 bus_ld <= 3'd3;//dr
+	 bus_ld <= 4'd3;//dr
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
@@ -654,6 +654,7 @@ module control_unit
 	
 	default : //NOOP
 	begin
+		next_stage <= FETCH1 ;
 	end
 	endcase
 
@@ -662,7 +663,7 @@ module control_unit
  IDLE:
  begin
  next_stage <= IDLE ;
- write_en <= 8'b00000000 ; //nothing
+ write_en <= 13'b0000000000000 ; //nothing
  inc <= 2'b00;
  clr <= 3'b000;
  dm_wr <=1'b0;
@@ -673,7 +674,7 @@ module control_unit
 default:
  begin
  next_stage <= FETCH1;
- write_en <= 8'b00000000 ; //nothing
+ write_en <= 13'b0000000000000 ; //nothing
  inc <= 2'b00;
  clr <= 3'b111;
  dm_wr <=1'b0;
