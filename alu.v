@@ -11,7 +11,8 @@ module alu( input clock,
 			3'd0: alu_out <= in1 + in2;
 			3'd1: alu_out <= in2 - in1;
 			3'd2: alu_out <= in1 * in2;
-			3'd3: alu_out <= in1 >> in2;
+			3'd3: alu_out <= in1 / in2;
+			3'd4: alu_out <= in2;
 			default: alu_out <= in1 + in2;
 			endcase
 
