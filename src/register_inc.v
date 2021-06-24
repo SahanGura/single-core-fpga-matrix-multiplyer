@@ -11,7 +11,7 @@ always @(posedge clk)
 		if(we==1)
 			data_out <= data_in;
 		else if(inc==1)
-			data_out <= data_in + 8'd1;
+			data_out <= data_out + 8'd1;
 		else if (clr==1)
 			data_out <= 8'd0;
 			
