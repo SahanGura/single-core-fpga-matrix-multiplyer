@@ -13,18 +13,18 @@ module alu(input [15:0] in1,
 	always @(*)
 		begin
 			case(alu_op)
-			3'd0: alu_out = in1 + in2;
-			3'd1: alu_out = in2 - in1;
-			3'd2: alu_out = in1 * in2;
-			3'd3: alu_out = in1 / in2;
-			3'd4: alu_out = in2;
-			default: alu_out = in1 + in2;
+			3'd0: alu_res = in1 + in2;
+			3'd1: alu_res = in2 - in1;
+			3'd2: alu_res = in1 * in2;
+			3'd3: alu_res = in1 / in2;
+			3'd4: alu_res = in2;
+			default: alu_res = in1 + in2;
 			endcase
 
-			if (z_temp == 0)
-				z_temp <= 1;
+			if (alu_out == 16'd0)
+				z_temp <= 1'b1;
 			else
-				z_temp <= 0;
+				z_temp <= 1'b0;
 		end
 endmodule
 

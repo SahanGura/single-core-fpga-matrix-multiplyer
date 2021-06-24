@@ -371,7 +371,7 @@ module control_unit
 	begin
 	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
-	 clr <= 3'b110;; //ac & tr
+	 clr <= 3'b110; //ac & tr
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC2;
@@ -382,7 +382,7 @@ module control_unit
 	begin
 	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
-	 clr <= 3'b100;; //ac
+	 clr <= 3'b100; //ac
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC2;
@@ -393,7 +393,7 @@ module control_unit
 	begin
 	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b00;
-	 clr <= 3'b010;; //ac
+	 clr <= 3'b010; //ac
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC2;
@@ -404,7 +404,7 @@ module control_unit
 	begin
 	 write_en <= 13'b0000000000000 ;
 	 inc <= 2'b10; //ac
-	 clr <= 3'b000;;
+	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC2;
@@ -505,7 +505,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC3 ;
-	 end_op <= 1'b0;	;		
+	 end_op <= 1'b0;
 	end
 
 	5'd1:
@@ -517,7 +517,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 next_stage <= EXEC3 ;
-	 end_op <= 1'b0;	;		
+	 end_op <= 1'b0;
 	end	
 	
 	5'd10:
