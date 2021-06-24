@@ -477,6 +477,12 @@ module control_unit
 	
 	default : //NOOP
 	begin
+		write_en <= 13'b0000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 3'b000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
 		next_stage <= EXEC2 ;
 	end
 	
@@ -591,7 +597,13 @@ module control_unit
 	
 	default : //NOOP
 	begin
-		next_stage <= EXEC3;
+		write_en <= 13'b0000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 3'b000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
+		next_stage <= EXEC3 ;
 	end
 	endcase
 	
@@ -630,6 +642,12 @@ module control_unit
 	
 	default : //NOOP
 	begin
+		write_en <= 13'b0000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 3'b000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
 		next_stage <= EXEC4 ;
 	end
 	endcase
@@ -654,6 +672,12 @@ module control_unit
 	
 	default : //NOOP
 	begin
+		write_en <= 13'b0000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 3'b000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
 		next_stage <= FETCH1 ;
 	end
 	endcase

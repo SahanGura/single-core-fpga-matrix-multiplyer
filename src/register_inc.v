@@ -10,9 +10,10 @@ always @(posedge clk)
 	begin 
 		if(we==1)
 			data_out <= data_in;
-		if(inc==1)
+		else if(inc==1)
 			data_out <= data_in + 8'd1;
-		if (clr==1)
+		else if (clr==1)
 			data_out <= 8'd0;
+			
 	end
 endmodule

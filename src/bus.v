@@ -1,5 +1,4 @@
-module bus( input clk,
- input [3:0] read_en,
+module bus(input [3:0] read_en,
  input [7:0] r,
  input [7:0] dr,
  input [15:0] tr,
@@ -13,9 +12,12 @@ module bus( input clk,
  input [7:0] rj,
  input [7:0] rk,
  
- output reg [15:0] busout ) ;
+ output [15:0] out ) ;
+
+ reg [15:0] busout;
+ assign out = busout;
  
- always @( r or dr or tr or pc or ac or im or read_en or dm)
+ always @( *)
 	begin
 	 case(read_en)
 	 4'd0: busout <= im ;

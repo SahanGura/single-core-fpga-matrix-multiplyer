@@ -136,7 +136,6 @@ alu alu1(
 );
 
 bus bus(
-.clk(clk),
 .read_en(bus_ld),
 .r(r_out),
 .pc(pc_out),
@@ -150,7 +149,7 @@ bus bus(
 .ri(ri_out),
 .rj(rj_out),
 .rk(rk_out),
-.busout(bus_out)
+.out(bus_out)
 );
 
 control_unit cu(
@@ -166,10 +165,9 @@ control_unit cu(
 .im_wr(im_wr)
 );
 
-mult_2_1 mult1 (
+mux2 mux1 (
 .in1(pc_out),
 .in2(bus_out),
-.clk(clk),
 .sel(we[7]),
 .out(ar_in)
 );
