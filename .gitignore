@@ -61,10 +61,8 @@
 # ignore Quartus II generated folders
 /output_files
 /simulation
-*/incremental_db/
-*/simulation/
-*/timing/
-*/testbench/
+/timing/
+/testbench/
 */*_sim/
 incremental_db/
 db/
