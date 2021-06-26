@@ -37,6 +37,8 @@
 *.html
 *.jdi
 *.jpg
+*.qpf
+*.qsf
 # *.mif
 *.pin
 *.pof
@@ -57,7 +59,8 @@
 # *.sdc # I want those timing files
 
 # ignore Quartus II generated folders
-*/db/
+/output_files
+/simulation
 */incremental_db/
 */simulation/
 */timing/
