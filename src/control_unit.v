@@ -110,7 +110,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 	
@@ -122,7 +122,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end	
 	
@@ -134,7 +134,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 
@@ -146,7 +146,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 
@@ -158,7 +158,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 
@@ -170,7 +170,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 
@@ -182,7 +182,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 
@@ -194,7 +194,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC1 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end	
 	
@@ -270,7 +270,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b010; //mult
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end
 	
@@ -283,7 +283,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b010; //mult
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end	
 
@@ -296,7 +296,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b010; //mult
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end
 
@@ -309,7 +309,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b010; //mult
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end		
 	
@@ -322,7 +322,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b001; //sub
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;	
 	end
 	
@@ -335,7 +335,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b001; //sub
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;	
 	end	
 	
@@ -348,7 +348,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b001; //sub
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;	
 	end
 
@@ -361,7 +361,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b001; //sub
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;	
 	end		
 	
@@ -372,7 +372,7 @@ module control_unit
 	 clr <= 3'b110; //ac & tr
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;		
 	end
 	
@@ -383,7 +383,7 @@ module control_unit
 	 clr <= 3'b100; //ac
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;		
 	end	
 	
@@ -394,7 +394,7 @@ module control_unit
 	 clr <= 3'b010; //ac
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;		
 	end	
 	
@@ -405,7 +405,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;	
 	end
 	
@@ -456,7 +456,7 @@ module control_unit
 		 clr <= 3'b000;
 		 dm_wr <=1'b0;
 		 im_wr <=1'b0;
-		 next_stage <= EXEC2 ;
+		 next_stage <= FETCH1 ;
 		 end_op <= 1'b0;
 		end
 	end
@@ -514,7 +514,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC3 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end	
 	
@@ -527,7 +527,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b000;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end
 	
@@ -540,7 +540,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b000;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end	
 	
@@ -553,7 +553,7 @@ module control_unit
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
 	 alu_mode <= 3'b000;
-	 next_stage <= EXEC2;
+	 next_stage <= FETCH1;
 	 end_op <= 1'b0;
 	end	
 	
@@ -589,7 +589,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC3 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;
 	end
 	
@@ -633,7 +633,7 @@ module control_unit
 	 clr <= 3'b000;
 	 dm_wr <=1'b1;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC4 ;
+	 next_stage <= FETCH1 ;
 	 end_op <= 1'b0;		
 	end
 	

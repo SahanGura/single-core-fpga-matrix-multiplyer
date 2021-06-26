@@ -34,24 +34,53 @@ module control_unit_tb();
     initial 
         begin
 
-            #60;
+            #60; 			//FOR FETCHING CYCLES
 				
-            ir = 8'd1;
+            ir = 8'd1; //LDAC
             z = 0;
-            #period;
+            #40; 			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60; 			//FOR FETCHING CYCLES
 
-            ir = 8'd2;
+            ir = 8'd2;	//LDARR1
             z = 0;
-            #period;
+            #20; 			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60;			//FOR FETCHING CYCLES
 
-            ir = 8'd3;
+            ir = 8'd10;	//ADDTR
             z = 0;
-            #period;
-
-            ir = 8'd4;
+            #40;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60;			//FOR FETCHING CYCLES
+				
+				ir = 8'd13;	//STACI
             z = 0;
-            #period;
-
+            #60;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60;			//FOR FETCHING CYCLES
+				
+				ir = 8'd15;	//MULT
+            z = 0;
+            #20;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60;			//FOR FETCHING CYCLES
+				
+				ir = 8'd27;	//JPNZ	WHEN Z = 0
+            z = 0;
+            #40;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+				
+				#60;			//FOR FETCHING CYCLES
+				
+				ir = 8'd27;	//JPNZ WHEN Z = 1
+            z = 1;
+            #20;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
+	
+				#60;			//FOR FETCHING CYCLES
+			
+				ir = 8'd28;	//ENDOP
+            z = 1;
+            #20;			//FOR EXECUTING CYCLES OF RELEVANT HIGH LEVEL INSTRUCTION
             $stop;
 
 
