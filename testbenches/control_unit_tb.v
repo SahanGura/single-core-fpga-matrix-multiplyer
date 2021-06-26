@@ -34,7 +34,8 @@ module control_unit_tb();
     initial 
         begin
 
-            #20;
+            #60;
+				
             ir = 8'd1;
             z = 0;
             #period;

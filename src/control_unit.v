@@ -9,8 +9,7 @@ module control_unit
  parameter FETCH1 = 3'b000, FETCH2 = 3'b001, FETCH3 = 3'b010, EXEC1 = 3'b011, EXEC2 = 3'b100,
  EXEC3 = 3'b101, EXEC4 = 3'B110, IDLE = 3'b111;
 
- reg stage = 3'b000;
- reg next_stage = 3'b000;
+ reg[2:0] stage, next_stage = FETCH1;
  
  //---------------------------------------------------------------------------
  
@@ -37,8 +36,7 @@ module control_unit
  
  always @(posedge clk)
  begin
-// next_stage <= FETCH1
- stage <= next_stage ;
+ stage = next_stage;
  
  case (stage)
  FETCH1 :
