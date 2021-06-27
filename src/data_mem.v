@@ -1,7 +1,7 @@
 module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	(input wire clk,
 	input wire we,
-	input wire[(DATA_WIDTH-1):0] w_data, 
+	input wire[(2*DATA_WIDTH-1):0] w_data, 
 	input wire[(ADDR_WIDTH-1):0] w_addr, r_addr,
 	output wire[(DATA_WIDTH-1):0] r_data);
 
@@ -41,7 +41,8 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	always@(posedge clk)
 		begin
 			if(we)
-				mem[w_addr] <= w_data;
+				mem[w_addr] <= w_data[7:0];
+				mem[w_addr+1'b1] <= w_data[15:8];
 			data_reg <= mem[r_addr];
 		end
 		

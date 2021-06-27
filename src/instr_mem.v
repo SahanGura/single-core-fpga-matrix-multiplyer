@@ -1,7 +1,7 @@
 module instr_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	(input clk,
 	input we,
-	input [(DATA_WIDTH-1):0] w_instr, 
+	input [(2*DATA_WIDTH-1):0] w_instr, 
 	input [(ADDR_WIDTH-1):0] w_addr, r_addr,
 	output [(DATA_WIDTH-1):0] r_instr);
 
@@ -154,7 +154,8 @@ module instr_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	always@(posedge clk)
 		begin
 			if(we)
-				mem[w_addr] <= w_instr;
+				mem[w_addr] <= w_instr[7:0];
+				mem[w_addr+1'b1] <= w_instr[15:8];
 			data_reg <= mem[r_addr];
 		end
 		
