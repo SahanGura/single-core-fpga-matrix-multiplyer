@@ -7,7 +7,7 @@ module control_unit_tb();
     reg z;
 
     wire end_op; wire [1:0] inc; wire [3:0] alu_mode; wire [3:0] bus_ld;
-    wire [12:0] write_en; wire [2:0] clr; wire dm_wr ;wire  im_wr;
+    wire [13:0] write_en; wire [3:0] clr; wire dm_wr ;wire  im_wr;
 
     always
         begin
