@@ -1,4 +1,4 @@
-module processor
+module core
 (input [7:0] dm_in,
 input [7:0] im_in,
 input clk,
