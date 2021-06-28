@@ -14,26 +14,26 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 //		$readmemh("initialRAM.txt",mem);
 
 	initial begin
-		mem[0] = 8'd2;	//m
-		mem[1] = 8'd3;	//n
-		mem[2] = 8'd2;	//l
-		mem[3] = 8'd0;	//i
-		mem[4] = 8'd0;	//j
-		mem[5] = 8'd0;	//k
-		mem[6] = 8'd8;
-		mem[7] = 8'd100;
-		mem[8] = 8'd1;	//val1
-		mem[9] = 8'd2;
-		mem[10] = 8'd3;
-		mem[11] = 8'd4;
-		mem[12] = 8'd5;
-		mem[13] = 8'd6;
-		mem[14] = 8'd7; //val1
-		mem[15] = 8'd8;
-		mem[16] = 8'd9;
-		mem[17] = 8'd10;
-		mem[18] = 8'd11;
-		mem[19] = 8'd12;
+		mem[0] = 8'd2;	//m			15 14 13 12 11 10 9     7 6 5 4 3 2 1 0
+		mem[2] = 8'd3;	//n
+		mem[4] = 8'd2;	//l
+		mem[6] = 8'd0;	//i
+		mem[8] = 8'd0;	//j
+		mem[10] = 8'd0;	//k
+		mem[12] = 8'd16;
+		mem[14] = 8'd150;
+		mem[16] = 8'd1;	//val1
+		mem[18] = 8'd2;
+		mem[20] = 8'd3;
+		mem[22] = 8'd4;
+		mem[24] = 8'd5;
+		mem[26] = 8'd6;
+		mem[28] = 8'd7; //val1
+		mem[30] = 8'd8;
+		mem[32] = 8'd9;
+		mem[34] = 8'd10;
+		mem[36] = 8'd11;
+		mem[38] = 8'd12;
 	end
 		
 	//body
@@ -41,9 +41,14 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	always@(posedge clk)
 		begin
 			if(we)
+				begin
 				mem[w_addr] <= w_data[7:0];
 				mem[w_addr+1'b1] <= w_data[15:8];
-			data_reg <= mem[r_addr];
+				end
+			else if(!we)
+				begin
+				data_reg <= mem[r_addr];
+				end
 		end
 		
 		//read operation

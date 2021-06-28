@@ -2,7 +2,7 @@ module core
 (input [7:0] dm_in,
 input [7:0] im_in,
 input clk,
-output [15:0] addr,
+output [15:0] addr_dm, addr_im,
 output dm_wr,
 output im_wr,
 output reg [15:0] to_mem
@@ -16,6 +16,7 @@ wire [1:0] inc;
 wire [15:0] bus_out;
 wire [15:0] ar_in;
 wire z;
+wire dm_addr;
 
 //wire [15:0] ar_out;
 wire [7:0] ir_out;
@@ -33,13 +34,14 @@ wire [15:0] ac_out;
 wire [15:0] alu_out;
 
 
-
-register #(.data_width(16)) ar
+address_reg #(.data_width(16)) ar
 (
 .clk (clk),
 .we (we[12]),
+.dm_addr(dm_addr),
 .data_in(ar_in),
-.data_out(addr)
+.data_out_im(addr_im),
+.data_out_dm(addr_dm)
 );
 
 register_inc #(.data_width(16)) pc
@@ -172,7 +174,8 @@ control_unit cu(
 .alu_mode(alu_mode),
 .inc(inc),
 .dm_wr(dm_wr),
-.im_wr(im_wr)
+.im_wr(im_wr),
+.dm_addr(dm_addr)
 );
 
 mux2 mux1 (

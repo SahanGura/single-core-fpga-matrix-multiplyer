@@ -2,7 +2,7 @@
 
 module instr_mem_tb();
 
-    reg clk;
+    reg clk = 1'b1;
 	reg we;
 	reg [15:0] w_instr;
 	reg [7:0] w_addr, r_addr;
@@ -10,8 +10,8 @@ module instr_mem_tb();
 
     always
         begin
-            #10 clk = 1'd1;
-            #10 clk = 1'd0;
+            #10 clk = 1'b0;
+            #10 clk = 1'b1;
         end
 
     instr_mem dut(
@@ -26,8 +26,6 @@ module instr_mem_tb();
 
     initial 
         begin
-            #10
-
             we = 0;
             r_addr = 8'd0;
             #20;

@@ -4,19 +4,19 @@ module control_unit
  input z,
 
  output reg end_op, output reg [1:0] inc, output reg [3:0] alu_mode, output reg[3:0] bus_ld ,
- output reg [13:0] write_en, output reg [3:0] clr, output reg dm_wr , im_wr );
+ output reg [13:0] write_en, output reg [3:0] clr, output reg dm_wr , im_wr , dm_addr = 1'b0);
 
- parameter FETCH1 = 3'b000, FETCH2 = 3'b001, FETCH3 = 3'b010, EXEC1 = 3'b011, EXEC2 = 3'b100,
- EXEC3 = 3'b101, EXEC4 = 3'B110, IDLE = 3'b111;
+ parameter FETCH1 = 4'd0, FETCH2 = 4'd1, FETCHX = 4'd2, FETCH3 = 4'd3, EXEC1 = 4'd4, EXECX = 4'd5, EXEC2 = 4'd6,
+ EXEC3 = 4'd7, EXECY = 4'd8, EXEC4 = 4'd9, IDLE = 4'd10, PASS = 4'd11;
 
- reg[2:0] stage, next_stage = FETCH1;
+ reg[3:0] stage, next_stage = FETCH1, prev_stage;
  
  //---------------------------------------------------------------------------
  
  //WRITE_EN 	0   0  0  0  0  0  0 0	0	0	0	0	0   0
  //	   			ARB AR PC DR IR R TR AC	R1	R2	Ri Rj	Rk  R3
  
-//BUS_LD 0     1     2  3  4  5    6    7  8	9	10	11	 12	(Dec Val/3bit BINARY)0-->5 busread 
+//BUS_LD 	0     1     2  3  4  5    6    7  8	9	10	11	 12	(Dec Val/3bit BINARY)0-->5 busread 
  //	     IMEMB DMEMB PC DR R  AC  TR	R1	R2	Ri	Rj	Rk   R3
  
  
@@ -36,13 +36,21 @@ module control_unit
  
  always @(posedge clk)
  begin
+ prev_stage <= next_stage;
  stage = next_stage;
  
  case (stage)
+ PASS:
+ begin
+	next_stage <= prev_stage + 4'd1 ;
+	end_op <= 1'b0;
+ end
+
  FETCH1 :
  begin
  write_en <= 14'b01000000000000 ; //ar
  inc <= 2'b00;
+ dm_addr <=1'b0;
  clr <= 4'b0000;
  dm_wr <=1'b0;
  im_wr <=1'b0;
@@ -54,6 +62,20 @@ module control_unit
  begin
  write_en <= 14'b00010000000000 ; //dr
  inc <= 2'b01; //pc
+ dm_addr <=1'b0;
+ bus_ld <= 4'd0;//i_mem
+ clr <= 4'b0000;
+ dm_wr <=1'b0;
+ im_wr <=1'b0;
+ next_stage <= FETCHX ;
+ end_op <= 1'b0;
+ end
+
+ FETCHX:
+ begin
+ write_en <= 14'b00010000000000 ; //dr
+ inc <= 2'b00; //pc
+ dm_addr <=1'b0;
  bus_ld <= 4'd0;//i_mem
  clr <= 4'b0000;
  dm_wr <=1'b0;
@@ -64,15 +86,28 @@ module control_unit
  
  FETCH3:
  begin
- write_en <= 14'b00001000000000 ; //ir
+ write_en <= 14'b01001000000000 ; //ar ir
  inc <= 2'b00;
+ dm_addr <=1'b0;
  bus_ld <= 4'd3;//dr
  clr <= 4'b0000;
  dm_wr <=1'b0;
  im_wr <=1'b0;
- next_stage <= EXEC1 ;
+ next_stage <= PASS ;
  end_op <= 1'b0;
  end
+
+//  FETCHY:
+//  begin
+//  write_en <= 14'b00001000000000 ; //ir
+//  inc <= 2'b00;
+//  bus_ld <= 4'd3;//dr
+//  clr <= 4'b0000;
+//  dm_wr <=1'b0;
+//  im_wr <=1'b0;
+//  next_stage <= EXEC1 ;
+//  end_op <= 1'b0;
+//  end
  
  EXEC1:
  begin
@@ -86,7 +121,7 @@ module control_unit
 	 clr <= 4'b0000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2 ;
+	 next_stage <= EXECX ;
 	 end_op <= 1'b0;
 	end
 	
@@ -98,7 +133,7 @@ module control_unit
 	 clr <= 4'b0000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2 ;
+	 next_stage <= EXECX ;
 	 end_op <= 1'b0;
 	end
 
@@ -157,6 +192,7 @@ module control_unit
 	5'd2: 
 	begin //LDARR1
 	 write_en <= 14'b11000000000000 ; //arb ar
+	 dm_addr <=1'b1;
 	 inc <= 2'b00;
 	 bus_ld <= 4'd7;//r1
 	 clr <= 4'b0000;
@@ -169,6 +205,7 @@ module control_unit
 	5'd3: 
 	begin //LDARR2
 	 write_en <= 14'b11000000000000 ; //arb ar
+	 dm_addr <=1'b1;
 	 inc <= 2'b00;
 	 bus_ld <= 4'd8;//r2
 	 clr <= 4'b0000;
@@ -190,7 +227,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd5: 
+	5'd8: 
 	begin //MVACR1
 	 write_en <= 14'b00000000100000 ; //r1
 	 inc <= 2'b00;
@@ -202,7 +239,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd6: 
+	5'd9: 
 	begin //MVACR2
 	 write_en <= 14'b00000000010000 ; //r2
 	 inc <= 2'b00;
@@ -226,7 +263,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd7: 
+	5'd5: 
 	begin //MVACRi
 	 write_en <= 14'b00000000001000 ; //ri
 	 inc <= 2'b00;
@@ -238,7 +275,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd8: 
+	5'd6: 
 	begin //MVACRj
 	 write_en <= 14'b00000000000100 ; //rj
 	 inc <= 2'b00;
@@ -250,7 +287,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd9: 
+	5'd7: 
 	begin //MVACRk
 	 write_en <= 14'b00000000000010 ; //rk
 	 inc <= 2'b00;
@@ -309,19 +346,19 @@ module control_unit
 	 clr <= 4'b0000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2;
+	 next_stage <= EXECX;
 	 end_op <= 1'b0;
 	end		
 		
 	5'd14:
 	begin //STTR
-	 write_en <= 14'b00010000000000 ; //dr
+	 write_en <= 14'b00000000000000 ; //dr
 	 inc <= 2'b00;
-	 bus_ld <= 4'd0;//imem
+	 bus_ld <= 4'd6;//tr
 	 clr <= 4'b0000;
-	 dm_wr <=1'b0;
+	 dm_wr <=1'b1;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC2 ;
+	 next_stage <= EXECX ;
 	 end_op <= 1'b0;	
 	end
 	
@@ -509,7 +546,7 @@ module control_unit
 		 clr <= 4'b0000;
 		 dm_wr <=1'b0;
 		 im_wr <=1'b0;
-		 next_stage <= EXEC2 ;
+		 next_stage <= EXECX ;
 		 end_op <= 1'b0;
 		end
 	 else
@@ -553,6 +590,93 @@ module control_unit
  end
 	
 //-----------------------------------------
+EXECX:
+begin
+	case(ir[5:0])
+
+	5'd0:
+	begin //LDACI
+	 write_en <= 14'b11000000000000 ; //arb ar
+	 dm_addr <=1'b1;
+	 inc <= 2'b00; //pc
+	 bus_ld <= 4'd3;//dr
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC2 ;
+	 end_op <= 1'b0;
+	end
+
+	5'd1:
+	begin //LDAC
+	 write_en <= 14'b00010000000000 ; //dr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd1;//dmem
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC2 ;
+	 end_op <= 1'b0;
+	end
+
+	5'd13:	
+	begin //STACI
+	 write_en <= 14'b00010000000000 ; //dr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd0;//imem
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC2;
+	 end_op <= 1'b0;
+	end	
+
+	5'd14:
+	begin //STTR
+	 write_en <= 14'b00000000000000 ; //dr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd6;//imem
+	 clr <= 4'b0000;
+	 dm_wr <=1'b1;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC2 ;
+	 end_op <= 1'b0;	
+	end
+	
+	5'd27:
+	begin
+	 write_en <= 14'b00010000000000 ; //dr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd0;//imem
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC2 ;
+	 end_op <= 1'b0;
+	end
+
+	
+
+	default : //NOOP
+	begin
+		write_en <= 14'b00000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 4'b0000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
+		next_stage <= EXEC2 ;
+	end
+	endcase
+
+end
+
+
+
+
+
+//-----------------------------------------
+
 	
  EXEC2:
  begin
@@ -561,6 +685,7 @@ module control_unit
 	5'd0:
 	begin //LDACI
 	 write_en <= 14'b11000000000000 ; //arb ar
+	 dm_addr <=1'b1;
 	 inc <= 2'b01; //pc
 	 bus_ld <= 4'd3;//dr
 	 clr <= 4'b0000;
@@ -626,6 +751,7 @@ module control_unit
 	begin //STACI
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 inc <= 2'b01; //pc
+	 dm_addr <=1'b1;
 	 bus_ld <= 4'd3;//dr
 	 clr <= 4'b0000;
 	 dm_wr <=1'b0;
@@ -686,7 +812,7 @@ module control_unit
 	 clr <= 4'b0000;
 	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= EXEC4 ;
+	 next_stage <= EXECY ;
 	 end_op <= 1'b0;		
 	end
 	 	
@@ -696,9 +822,9 @@ module control_unit
 	 inc <= 2'b00;
 	 bus_ld <= 4'd5;//ac
 	 clr <= 4'b0000;
-	 dm_wr <=1'b1;
+	 dm_wr <=1'b0;
 	 im_wr <=1'b0;
-	 next_stage <= FETCH1 ;
+	 next_stage <= EXECY ;
 	 end_op <= 1'b0;		
 	end
 	
@@ -716,7 +842,53 @@ module control_unit
 	endcase
 
  end
- 
+
+ //-----------------------------------------
+	
+ EXECY:
+ begin
+	case (ir[5:0])
+	
+	5'd0:
+	begin //LDACI
+	 write_en <= 14'b00010000000000 ; //dr
+	 inc <= 2'b00;
+	 bus_ld <= 4'd1;//dmem
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 next_stage <= EXEC4 ;
+	 end_op <= 1'b0;		
+	end
+
+	5'd13:
+	begin //STACI --------------------- AC --> MEM
+	 write_en <= 14'b00000000000000 ; //nothing
+	 inc <= 2'b00;
+	 bus_ld <= 4'd5;//ac
+	 clr <= 4'b0000;
+	 dm_wr <=1'b1;
+	 im_wr <=1'b0;
+	 next_stage <= FETCH1 ;
+	 end_op <= 1'b0;		
+	end
+
+	default : //NOOP
+	begin
+		write_en <= 14'b00000000000000 ; //nothing
+		inc <= 2'b00;
+		clr <= 4'b0000;
+		dm_wr <=1'b0;
+		im_wr <=1'b0;
+		end_op <= 1'b0;
+		next_stage <= EXEC3 ;
+	end
+	endcase
+ end
+
+
+ //----------------------------------------
+
  EXEC4:
  begin
 	case (ir[4:0])

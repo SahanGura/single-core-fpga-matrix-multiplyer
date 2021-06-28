@@ -21,8 +21,8 @@ module processor_tb();
     initial 
         begin
             #period;
-            
-            #1000;
+
+            #10000;
 
             $stop;
             
