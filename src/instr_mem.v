@@ -61,6 +61,28 @@ module instr_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	// mem[6] = 8'd1;
 	// mem[7] = ENDOP;
 	// end
+
+
+
+	// // //Instructions	counter
+	// initial begin
+	// mem[0] = CLRAC; //24
+	// mem[1] = STACI; //0
+	// mem[2] = 8'd52;
+	// mem[3] = LDACI; //26
+	// mem[4] = 8'd50;
+	// mem[5] = MVACRi; //13
+	// mem[6] = LDACI;
+	// mem[7] = 8'd52;
+	// mem[1] = INCAC; //0
+	// mem[2] = STACI;
+	// mem[3] = ; //26
+	// mem[4] = 8'd50;
+	// mem[5] = MVACRi; //13
+	// mem[6] = LDACI;
+	// mem[7] = 8'd51;
+
+	// end
 	
 	// //Instructions mult
 	initial begin
@@ -115,7 +137,27 @@ module instr_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	mem[47] = LDAC; 
 	mem[48] = STACI;
 	mem[49] = 8'd160;
-	mem[50] = ENDOP;
+	mem[50] = LDACI;
+	mem[51] = 8'd70;
+	mem[52] = MVACRi;
+	mem[53] = LDACI;
+	mem[54] = 8'd2;
+	mem[55] = MVAC;
+	mem[56] = MULT;
+	mem[57] = LDACI;
+	mem[58] = 8'd70;
+	mem[59] = INAC;
+	mem[60] = MVACRi;
+	mem[61] = STACI;
+	mem[62] = 8'd70;
+	mem[63] = LDACI;
+	mem[64] = 8'd150;
+	mem[65] = SUBRi;
+	mem[66] = CLRR;
+	mem[67] = JPNZ;
+	mem[68] = 8'd50;
+	mem[69] = ENDOP;
+
 	end
 	
 	
