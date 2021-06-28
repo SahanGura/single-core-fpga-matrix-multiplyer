@@ -90,7 +90,32 @@ module instr_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	mem[22] = MVACR1;
 	mem[23] = LDARR1;
 	mem[24] = STTR;
-	mem[25] = ENDOP;
+	mem[25] = LDACI;
+	mem[26] = 8'd150;
+	mem[27] = MVACRi;
+	mem[28] = MULTRi;
+	mem[29] = STACI;
+	mem[30] = 8'd154; //verified
+	mem[31] = MVACRj;
+	mem[32] = INAC;
+	mem[33] = MULTRj;
+	mem[34] = STACI;
+	mem[35] = 8'd156; //1332
+	mem[36] = LDACRi; //6
+	mem[37] = MVACRk;
+	mem[38] = INAC; //7
+	mem[39] = INAC; //8
+	mem[40] = SUBRk;
+	mem[41] = STACI;
+	mem[42] = 8'd158; //2
+	mem[43] = LDACRj; //36
+	mem[44] = MVACR1; //36
+	mem[45] = ADDR1; 
+	mem[46] = LDARR1; 
+	mem[47] = LDAC; 
+	mem[48] = STACI;
+	mem[49] = 8'd160;
+	mem[50] = ENDOP;
 	end
 	
 	

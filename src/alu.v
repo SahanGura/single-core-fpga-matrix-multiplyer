@@ -8,7 +8,7 @@ module alu(input [15:0] in1,
     begin
         case(alu_op)
             3'd0: alu_out    <= in1 + in2;
-            3'd1: alu_out    <= in2 - in1;
+            3'd1: alu_out    <= in1 - in2;
             3'd2: alu_out    <= in1 * in2;
             3'd3: alu_out    <= in1 / in2;
             3'd4: alu_out    <= in2;

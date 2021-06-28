@@ -34,6 +34,7 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 		mem[34] = 8'd10;
 		mem[36] = 8'd11;
 		mem[38] = 8'd12;
+		mem[72] = 8'd69;
 	end
 		
 	//body
