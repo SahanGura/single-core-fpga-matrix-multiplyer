@@ -58,8 +58,17 @@ add wave -noupdate /processor_tb/dut/core1/tr/data_out
 add wave -noupdate /processor_tb/dut/core1/tr/inc
 add wave -noupdate /processor_tb/dut/core1/tr/we
 add wave -noupdate {/processor_tb/dut/data_mem1/mem[152]}
+add wave -noupdate /processor_tb/dut/core1/alu1/alu_out
+add wave -noupdate /processor_tb/dut/core1/alu1/in1
+add wave -noupdate /processor_tb/dut/core1/alu1/in2
+add wave -noupdate /processor_tb/dut/core1/ri/data_out
+add wave -noupdate /processor_tb/dut/core1/r1/data_out
+add wave -noupdate /processor_tb/dut/core1/r2/data_out
+add wave -noupdate /processor_tb/dut/core1/r3/data_out
+add wave -noupdate /processor_tb/dut/core1/rj/data_out
+add wave -noupdate /processor_tb/dut/core1/rk/data_out
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {3140000 ps} 0}
+WaveRestoreCursors {{Cursor 1} {4971048 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 270
 configure wave -valuecolwidth 100
@@ -75,4 +84,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {362168 ps} {1019732 ps}
+WaveRestoreZoom {4881142 ps} {5701538 ps}

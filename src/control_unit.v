@@ -113,7 +113,7 @@ module control_unit
  begin
 	case (ir[5:0])
 	
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -125,7 +125,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	5'd1:
+	6'd1:
 	begin //LDAC
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -137,7 +137,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd29:
+	6'd29:
 	begin //LDACRi
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -150,7 +150,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd30:
+	6'd30:
 	begin //LDACRj
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -163,7 +163,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd31:
+	6'd31:
 	begin //LDACRk
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -176,7 +176,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd32:
+	6'd32:
 	begin //LDACR3
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -189,7 +189,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	5'd2: 
+	6'd2: 
 	begin //LDARR1
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 dm_addr <=1'b1;
@@ -202,7 +202,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	5'd3: 
+	6'd3: 
 	begin //LDARR2
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 dm_addr <=1'b1;
@@ -215,7 +215,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end	
 	
-	5'd4: 
+	6'd4: 
 	begin //MVACR
 	 write_en <= 14'b00000100000000 ; //r
 	 inc <= 2'b00;
@@ -227,7 +227,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd8: 
+	6'd8: 
 	begin //MVACR1
 	 write_en <= 14'b00000000100000 ; //r1
 	 inc <= 2'b00;
@@ -239,7 +239,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd9: 
+	6'd9: 
 	begin //MVACR2
 	 write_en <= 14'b00000000010000 ; //r2
 	 inc <= 2'b00;
@@ -251,7 +251,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd33: 
+	6'd33: 
 	begin //MVACR3
 	 write_en <= 14'b00000000000001 ; //r3
 	 inc <= 2'b00;
@@ -263,7 +263,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd5: 
+	6'd5: 
 	begin //MVACRi
 	 write_en <= 14'b00000000001000 ; //ri
 	 inc <= 2'b00;
@@ -275,7 +275,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd6: 
+	6'd6: 
 	begin //MVACRj
 	 write_en <= 14'b00000000000100 ; //rj
 	 inc <= 2'b00;
@@ -287,7 +287,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd7: 
+	6'd7: 
 	begin //MVACRk
 	 write_en <= 14'b00000000000010 ; //rk
 	 inc <= 2'b00;
@@ -299,7 +299,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end	
 	
-	5'd10:
+	6'd10:
 	begin //ADDTR   //have an issue here.....................................................
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -312,7 +312,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	5'd11:
+	6'd11:
 	begin //ADDR1
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -325,7 +325,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end	
 	
-	5'd12:
+	6'd12:
 	begin //ADDR2
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -338,7 +338,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd13:	
+	6'd13:	
 	begin //STACI
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -350,7 +350,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end		
 		
-	5'd14:
+	6'd14:
 	begin //STTR
 	 write_en <= 14'b00000000000000 ; //dr
 	 inc <= 2'b00;
@@ -362,7 +362,7 @@ module control_unit
 	 end_op <= 1'b0;	
 	end
 	
-	5'd15: //MULT
+	6'd15: //MULT
 	begin 
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -375,7 +375,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 	
-	5'd16: //MULTRi
+	6'd16: //MULTRi
 	begin 
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -388,7 +388,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end	
 
-	5'd17: //MULTRj
+	6'd17: //MULTRj
 	begin 
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -401,7 +401,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end
 
-	5'd18: //MULTRk
+	6'd18: //MULTRk
 	begin 
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -414,7 +414,7 @@ module control_unit
 	 end_op <= 1'b0;
 	end		
 	
-	5'd19: //SUB
+	6'd19: //SUB
 	begin
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -427,7 +427,7 @@ module control_unit
 	 end_op <= 1'b0;	
 	end
 	
-	5'd20: //SUBRi
+	6'd20: //SUBRi
 	begin
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -440,7 +440,7 @@ module control_unit
 	 end_op <= 1'b0;	
 	end	
 	
-	5'd21: //SUBRj
+	6'd21: //SUBRj
 	begin
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -453,7 +453,7 @@ module control_unit
 	 end_op <= 1'b0;	
 	end
 
-	5'd22: //SUBRk
+	6'd22: //SUBRk
 	begin
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -466,7 +466,7 @@ module control_unit
 	 end_op <= 1'b0;	
 	end		
 	
-	5'd23: //CLRR
+	6'd23: //CLRR
 	begin
 	 write_en <= 14'b00000000000000 ;
 	 inc <= 2'b00;
@@ -477,7 +477,7 @@ module control_unit
 	 end_op <= 1'b0;		
 	end
 	
-	5'd24: //CLRAC
+	6'd24: //CLRAC
 	begin
 	 write_en <= 14'b00000000000000 ;
 	 inc <= 2'b00;
@@ -488,7 +488,7 @@ module control_unit
 	 end_op <= 1'b0;		
 	end	
 	
-	5'd25: //CLRTR
+	6'd25: //CLRTR
 	begin
 	 write_en <= 14'b00000000000000 ;
 	 inc <= 2'b00;
@@ -499,7 +499,7 @@ module control_unit
 	 end_op <= 1'b0;		
 	end	
 	
-	5'd26: //INCAC
+	6'd26: //INCAC
 	begin
 	 write_en <= 14'b00000000000000 ;
 	 inc <= 2'b10; //ac
@@ -536,7 +536,7 @@ module control_unit
 //		end 
 //	end
 	
-	5'd27:	//JPNZ
+	6'd27:	//JPNZ
 	begin
 	 if (z==0)
 		begin
@@ -562,7 +562,7 @@ module control_unit
 		end
 	end
 	
-	5'd28: //ENDOP
+	6'd28: //ENDOP
 	begin
 	 write_en <= 14'b00000000000000 ;
 	 inc <= 2'b00;
@@ -594,7 +594,7 @@ EXECX:
 begin
 	case(ir[5:0])
 
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 dm_addr <=1'b1;
@@ -607,7 +607,7 @@ begin
 	 end_op <= 1'b0;
 	end
 
-	5'd1:
+	6'd1:
 	begin //LDAC
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -619,7 +619,7 @@ begin
 	 end_op <= 1'b0;
 	end
 
-	5'd13:	
+	6'd13:	
 	begin //STACI
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -631,7 +631,7 @@ begin
 	 end_op <= 1'b0;
 	end	
 
-	5'd14:
+	6'd14:
 	begin //STTR
 	 write_en <= 14'b00000000000000 ; //dr
 	 inc <= 2'b00;
@@ -643,7 +643,7 @@ begin
 	 end_op <= 1'b0;	
 	end
 	
-	5'd27:
+	6'd27:
 	begin
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -655,6 +655,57 @@ begin
 	 end_op <= 1'b0;
 	end
 
+	6'd29:
+	begin //LDACRi
+	 write_en <= 14'b00000001000000 ; //ac
+	 inc <= 2'b00;
+	 bus_ld <= 4'd9;//ri
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'd4; //pass
+	 next_stage <= FETCH1;
+	 end_op <= 1'b0;
+	end
+
+	6'd30:
+	begin //LDACRj
+	 write_en <= 14'b00000001000000 ; //ac
+	 inc <= 2'b00;
+	 bus_ld <= 4'd10;//rj
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'd4; //pass
+	 next_stage <= FETCH1;
+	 end_op <= 1'b0;
+	end
+
+	6'd31:
+	begin //LDACRk
+	 write_en <= 14'b00000001000000 ; //ac
+	 inc <= 2'b00;
+	 bus_ld <= 4'd11;//rk
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'd4; //pass
+	 next_stage <= FETCH1;
+	 end_op <= 1'b0;
+	end
+
+	6'd32:
+	begin //LDACR3
+	 write_en <= 14'b00000001000000 ; //ac
+	 inc <= 2'b00;
+	 bus_ld <= 4'd12;//r3
+	 clr <= 4'b0000;
+	 dm_wr <=1'b0;
+	 im_wr <=1'b0;
+	 alu_mode <= 3'd4; //pass
+	 next_stage <= FETCH1;
+	 end_op <= 1'b0;
+	end
 	
 
 	default : //NOOP
@@ -682,7 +733,7 @@ end
  begin
 	case (ir[5:0])
 	
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 dm_addr <=1'b1;
@@ -695,7 +746,7 @@ end
 	 end_op <= 1'b0;
 	end
 
-	5'd1:
+	6'd1:
 	begin //LDAC1
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;
@@ -708,7 +759,7 @@ end
 	 end_op <= 1'b0;
 	end	
 	
-	5'd10:
+	6'd10:
 	begin //ADDTR   //have an issue here.....................................................
 	 write_en <= 14'b00000010000000 ; //tr
 	 inc <= 2'b00;
@@ -721,7 +772,7 @@ end
 	 end_op <= 1'b0;
 	end
 	
-	5'd11:
+	6'd11:
 	begin //ADDR1  
 	 write_en <= 14'b00000000100000 ; //r1
 	 inc <= 2'b00;
@@ -734,7 +785,7 @@ end
 	 end_op <= 1'b0;
 	end	
 	
-	5'd12:
+	6'd12:
 	begin //ADDR2  
 	 write_en <= 14'b00000000010000 ; //r2
 	 inc <= 2'b00;
@@ -747,7 +798,7 @@ end
 	 end_op <= 1'b0;
 	end	
 	
-	5'd13:
+	6'd13:
 	begin //STACI
 	 write_en <= 14'b11000000000000 ; //arb ar
 	 inc <= 2'b01; //pc
@@ -772,7 +823,7 @@ end
 //	 end_op <= 1'b0;
 //	end
 	
-	5'd27:	//JPNZ
+	6'd27:	//JPNZ
 	begin
 	 write_en <= 14'b00100000000000 ; //pc
 	 inc <= 2'b00;
@@ -804,7 +855,7 @@ end
  begin
 	case (ir[5:0])
 	
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -816,7 +867,7 @@ end
 	 end_op <= 1'b0;		
 	end
 	 	
-	5'd13:
+	6'd13:
 	begin //STACI --------------------- AC --> MEM
 	 write_en <= 14'b00000000000000 ; //nothing
 	 inc <= 2'b00;
@@ -849,7 +900,7 @@ end
  begin
 	case (ir[5:0])
 	
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b00010000000000 ; //dr
 	 inc <= 2'b00;
@@ -861,7 +912,7 @@ end
 	 end_op <= 1'b0;		
 	end
 
-	5'd13:
+	6'd13:
 	begin //STACI --------------------- AC --> MEM
 	 write_en <= 14'b00000000000000 ; //nothing
 	 inc <= 2'b00;
@@ -892,7 +943,7 @@ end
  EXEC4:
  begin
 	case (ir[4:0])
-	5'd0:
+	6'd0:
 	begin //LDACI
 	 write_en <= 14'b00000001000000 ; //ac
 	 inc <= 2'b00;

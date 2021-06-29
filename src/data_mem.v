@@ -21,7 +21,7 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 		mem[8] = 8'd0;	//j
 		mem[10] = 8'd0;	//k
 		mem[12] = 8'd16;
-		mem[14] = 8'd150;
+		mem[14] = 8'd70;
 		mem[16] = 8'd1;	//val1
 		mem[18] = 8'd2;
 		mem[20] = 8'd3;
@@ -34,6 +34,7 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 		mem[34] = 8'd10;
 		mem[36] = 8'd11;
 		mem[38] = 8'd12;
+		mem[70] = 8'd0;
 		mem[72] = 8'd69;
 	end
 		

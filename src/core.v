@@ -68,9 +68,11 @@ register ir(
 .data_out(ir_out)
 );
 
-register r(
+register_inc r(
 .clk (clk),
 .we (we[8]),
+.clr(clr[3]),
+.inc(0),
 .data_in(bus_out[15:0]),
 .data_out(r_out)
 );
@@ -129,22 +131,22 @@ register_inc #(.data_width(16)) tr
 .data_out(tr_out)
 );
 
-register_inc #(.data_width(16)) ac
+accumulator #(.data_width(16)) ac
 (
 .clk (clk),
 .we (we[6]),
 .clr(clr[2]),
 .inc(inc[1]),
 .data_in(alu_out[15:0]),
-.data_out(ac_out)
+.data_out(ac_out),
+.z(z)
 );
 
 alu alu1(
 .in1(ac_out),
 .in2(bus_out),
 .alu_op(alu_mode),
-.alu_out(alu_out),
-.z(z)
+.alu_out(alu_out)
 );
 
 bus bus(
@@ -161,6 +163,7 @@ bus bus(
 .ri(ri_out),
 .rj(rj_out),
 .rk(rk_out),
+.r3(r3_out),
 .out(bus_out)
 );
 
