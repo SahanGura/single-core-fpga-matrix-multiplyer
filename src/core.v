@@ -8,8 +8,8 @@ output im_wr,
 output reg [15:0] to_mem
 );
 
-wire [13:0] we;
-wire [3:0] clr;
+wire [15:0] we;
+wire [5:0] clr;
 wire [3:0] bus_ld;
 wire [2:0] alu_mode;
 wire [1:0] inc;
@@ -29,6 +29,8 @@ wire [7:0] r3_out;
 wire [7:0] ri_out;
 wire [7:0] rj_out;
 wire [7:0] rk_out;
+wire [7:0] ra_out;
+wire [7:0] rb_out;
 wire [15:0] tr_out;
 wire [15:0] ac_out;
 wire [15:0] alu_out;
@@ -77,25 +79,27 @@ register_inc r(
 .data_out(r_out)
 );
 
-register r1(
+register_inc r1(
 .clk (clk),
 .we (we[5]),
+.clr(clr[5]),
+.inc(0),
 .data_in(bus_out[15:0]),
 .data_out(r1_out)
 );
 
-register r2(
+register_inc r2(
 .clk (clk),
 .we (we[4]),
+.clr(clr[4]),
+.inc(0),
 .data_in(bus_out[15:0]),
 .data_out(r2_out)
 );
 
-register_inc r3(
+register r3(
 .clk (clk),
 .we (we[0]),
-.clr(clr[3]),
-.inc(0),
 .data_in(bus_out[15:0]),
 .data_out(r3_out)
 );
@@ -119,6 +123,20 @@ register rk(
 .we (we[1]),
 .data_in(bus_out[15:0]),
 .data_out(rk_out)
+);
+
+register ra(
+.clk (clk),
+.we (we[15]),
+.data_in(bus_out[15:0]),
+.data_out(ra_out)
+);
+
+register rb(
+.clk (clk),
+.we (we[14]),
+.data_in(bus_out[15:0]),
+.data_out(rb_out)
 );
 
 register_inc #(.data_width(16)) tr
@@ -164,6 +182,8 @@ bus bus(
 .rj(rj_out),
 .rk(rk_out),
 .r3(r3_out),
+.ra(ra_out),
+.rb(rb_out),
 .out(bus_out)
 );
 

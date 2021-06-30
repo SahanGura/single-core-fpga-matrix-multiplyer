@@ -22,7 +22,7 @@ module processor_tb();
         begin
             #period;
 
-            #200000;
+            #1000000;
 
             $stop;
             
