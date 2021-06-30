@@ -1,182 +1,48 @@
 module processor
-(input [7:0] dm_in,
-input [7:0] im_in,
+(
 input clk,
-output [15:0] addr,
-output dm_wr,
-output im_wr,
 output reg [15:0] to_mem
 );
 
-wire [12:0] we;
-wire [2:0] clr;
-wire [3:0] bus_ld;
-wire [2:0] alu_mode;
-wire [1:0] inc;
-wire [15:0] bus_out;
-wire [15:0] ar_in;
-wire z;
+wire [7:0] dm_out;
+wire [7:0] im_out;
+wire [7:0] addr_out_im, addr_out_dm;
+wire [15:0] mem_in;
+wire dm_we;
+wire im_we;
 
-//wire [15:0] ar_out;
-wire [7:0] ir_out;
-wire [15:0] pc_out;
-wire [15:0]dr_out;
-wire [7:0] r_out;
-wire [7:0] r1_out;
-wire [7:0] r2_out;
-wire [7:0] ri_out;
-wire [7:0] rj_out;
-wire [7:0] rk_out;
-wire [15:0] tr_out;
-wire [15:0] ac_out;
-wire [15:0] alu_out;
-
-
-
-register #(.data_width(16)) ar
-(
-.clk (clk),
-.we (we[11]),
-.data_in(ar_in),
-.data_out(addr)
-);
-
-register_inc #(.data_width(16)) pc
-(
-.clk (clk),
-.we (we[10]),
-.clr(clr[0]),
-.inc(inc[0]),
-.data_in(bus_out[15:0]),
-.data_out(pc_out)
-);
-
-register dr(
-.clk (clk),
-.we (we[9]),
-.data_in(bus_out[15:0]),
-.data_out(dr_out)
-);
-
-register ir(
-.clk (clk),
-.we (we[8]),
-.data_in(bus_out[15:0]),
-.data_out(ir_out)
-);
-
-register r(
-.clk (clk),
-.we (we[7]),
-.data_in(bus_out[15:0]),
-.data_out(r_out)
-);
-
-register r1(
-.clk (clk),
-.we (we[4]),
-.data_in(bus_out[15:0]),
-.data_out(r1_out)
-);
-
-register r2(
-.clk (clk),
-.we (we[3]),
-.data_in(bus_out[15:0]),
-.data_out(r2_out)
-);
-
-register ri(
-.clk (clk),
-.we (we[2]),
-.data_in(bus_out[15:0]),
-.data_out(ri_out)
-);
-
-register rj(
-.clk (clk),
-.we (we[1]),
-.data_in(bus_out[15:0]),
-.data_out(rj_out)
-);
-
-register rk(
-.clk (clk),
-.we (we[0]),
-.data_in(bus_out[15:0]),
-.data_out(rk_out)
-);
-
-register_inc #(.data_width(16)) tr
-(
-.clk (clk),
-.we (we[6]),
-.clr(clr[1]),
-.inc(0),
-.data_in(bus_out[15:0]),
-.data_out(tr_out)
-);
-
-register_inc #(.data_width(16)) ac
-(
-.clk (clk),
-.we (we[5]),
-.clr(clr[2]),
-.inc(inc[1]),
-.data_in(alu_out[15:0]),
-.data_out(ac_out)
-);
-
-alu alu1(
-.in1(ac_out),
-.in2(bus_out),
-.alu_op(alu_mode),
-.alu_out(alu_out),
-.z(z)
-);
-
-bus bus(
-.read_en(bus_ld),
-.r(r_out),
-.pc(pc_out),
-.dr(dr_out),
-.tr(tr_out),
-.ac(ac_out),
-.dm(dm_in),
-.im(im_in),
-.r1(r1_out),
-.r2(r2_out),
-.ri(ri_out),
-.rj(rj_out),
-.rk(rk_out),
-.out(bus_out)
-);
-
-control_unit cu(
-.ir(ir_out),
+core core1(
+.dm_in(dm_out),
+.im_in(im_out),
 .clk(clk),
-.z(z),
-.write_en(we),
-.clr(clr),
-.bus_ld(bus_ld),
-.alu_mode(alu_mode),
-.inc(inc),
-.dm_wr(dm_wr),
-.im_wr(im_wr)
+.addr_im(addr_out_im),
+.addr_dm(addr_out_dm),
+.dm_wr(dm_we),
+.im_wr(im_we),
+.to_mem(mem_in)
 );
 
-mux2 mux1 (
-.in1(pc_out),
-.in2(bus_out),
-.sel(we[7]),
-.out(ar_in)
+data_mem data_mem1(
+.clk(clk),
+.we(dm_we),
+.w_data(mem_in),
+.r_data(dm_out),
+.w_addr(addr_out_dm),
+.r_addr(addr_out_dm)
 );
 
+instr_mem instr_mem1(
+.clk(clk),
+.we(im_we),
+.w_instr(mem_in),
+.r_instr(im_out),
+.w_addr(addr_out_im),
+.r_addr(addr_out_im)
+);
 
 always @ (posedge clk)
 begin
-to_mem <= bus_out;
+to_mem <= mem_in;
 end
 
-
-endmodule
+endmodule 

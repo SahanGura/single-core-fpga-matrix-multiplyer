@@ -11,6 +11,9 @@ module bus(input [3:0] read_en,
  input [7:0] ri,
  input [7:0] rj,
  input [7:0] rk,
+ input [7:0] r3,
+ input [7:0] ra,
+ input [7:0] rb,
  
  output [15:0] out ) ;
 
@@ -32,6 +35,9 @@ module bus(input [3:0] read_en,
 	 4'd9: busout <= ri;
 	 4'd10: busout <= rj;
 	 4'd11: busout <= rk;
+	 4'd12:busout <= r3;
+	 4'd13:busout <= ra;
+	 4'd14:busout <= rb;
 	 default: busout <= 8'd0;
 	 endcase
 	end
