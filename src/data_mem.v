@@ -9,7 +9,7 @@ module data_mem #(parameter DATA_WIDTH = 8, ADDR_WIDTH = 8)
 	reg[DATA_WIDTH-1:0] mem [2**ADDR_WIDTH-1:0]; //2D-array for storage
 	reg[DATA_WIDTH-1:0] data_reg; //read output register
 
-//	//RAM initialization from an output file
+	//RAM initialization from an output file
     initial begin
         $display("Loading rom.");
         $readmemh("initial_files/data_mem.txt", mem);

@@ -1,7 +1,7 @@
 module processor
 (
 input clk,
-output reg [15:0] to_mem
+output reg [7:0] ins
 );
 
 wire [7:0] dm_out;
@@ -42,7 +42,7 @@ instr_mem instr_mem1(
 
 always @ (posedge clk)
 begin
-to_mem <= mem_in;
+ins <= im_out;
 end
 
 endmodule 
