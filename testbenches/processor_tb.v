@@ -2,7 +2,7 @@
 
 module processor_tb();
     reg clk = 1'b1;
-    wire [15:0] to_mem;
+    wire [7:0] ins;
 
 
     always
@@ -11,22 +11,28 @@ module processor_tb();
             #10 clk = 1'b1;
         end
 
+    always @ (posedge clk)
+	    if (ins == 8'd28)
+		begin
+		    $display("ENDOP Triggered");
+            #100;
+            $stop;
+		end
+
     localparam period = 20; 
 
     processor dut(
         .clk(clk),
-        .to_mem(to_mem)
+        .ins(ins)
     );
 
-    initial 
-        begin
-            #period;
+    // initial 
+    //     begin
+    //         #period;
 
-            #1000000;
-
-            $stop;
-            
-        end
+    //         #2000000;
+    //         $stop;
+    //     end
 
 endmodule
 
