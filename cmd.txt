@@ -1,0 +1,1 @@
+vsim -do "do FPGA_Project_run_msim_rtl_verilog.do; do {wave_files/waves.do}; radix -decimal; restart -force; run -all; mem display -addressradix d -dataradix unsigned -wordsperline 10 /processor_tb/dut/data_mem1; mem save -outfile {output_files/res.txt} -dataradix unsigned -noaddress -start 150 -end 203 /processor_tb/dut/data_mem1 -wordsperline 1"

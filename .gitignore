@@ -60,7 +60,6 @@
 
 # ignore Quartus II generated folders
 /output_files
-/simulation
 /timing/
 /testbench/
 */*_sim/
@@ -68,3 +67,10 @@ incremental_db/
 db/
 _output_files/
 PLLJ_PLLSPE_INFO.txt
+
+#Allow these files/dirs
+/simulation/*
+!/simulation/modelsim/
+/simulation/modelsim/*
+!/simulation/modelsim/initial_files/
+!/simulation/modelsim/wave_files/
